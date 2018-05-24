@@ -13,7 +13,6 @@ RUN npm i serverless -g \
  && mv terraform /usr/local/bin \
  && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-RUN chmod 755 /usr/local/bin/runway.sh
 RUN rm -rf /root/.cache /root/.npm
 
 RUN mkdir /src
