@@ -8,9 +8,23 @@ make runway usage easier on all platform that docker is supported.
 To make deployment work similar to runway I suggest you add the following to your .bash_profile or similar so you can
 run runway with out providing all these parameter every single time.
 
-`alias runway='docker run -it --rm -v$PWD:/src -v~/.aws:/root/.aws --env DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT --env AWS_PROFILE=$AWS_PROFILE --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN anozaki/runway runway'`
+### Bash
 
-**Please replace `~/.aws` with your .aws absolute path or if you do not use .aws you can omit this volume attachment**
+Adding a bash alias.
+
+`alias runway='docker run -it --rm -v$PWD:/src -v$HOME/.aws:/root/.aws --env DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT --env AWS_PROFILE=$AWS_PROFILE --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN anozaki/runway runway'`
+
+### Windows Cmd
+
+Adding windows alias to cmd.
+
+`doskey runway=docker run -it --rm -v%CD%:/src -v%userprofile%/.aws:/root/.aws --env DEPLOY_ENVIRONMENT=%DEPLOY_ENVIRONMENT% --env AWS_PROFILE=%AWS_PROFILE% --env AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY% --env AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY% --env AWS_SESSION_TOKEN=%AWS_SESSION_TOKEN% anozaki/runway:0.17.0 runway`
+
+### Windows PowerShell
+
+**TODO** I'm not a powershell expert :( if somebody knows please let me know. The below command does however works but not an alias.
+
+`docker run -it --rm -v ${PWD}.path:/src -v ${HOME}/.aws:/root/.aws --env DEPLOY_ENVIRONMENT=${DEPLOY_ENVIRONMENT} --env AWS_PROFILE=${AWS_PROFILE} --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY} --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --env AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN} anozaki/runway:0.17.0 runway`
 
 ### Running
 
