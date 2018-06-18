@@ -2,12 +2,12 @@ FROM docker:latest
 MAINTAINER "Akito Nozaki <anozaki@onica.com>"
 
 ENV TERRAFORM_VERSION=0.11.7
-ENV RUNWAY_VERSION=0.19.0
+#ENV RUNWAY_VERSION=0.20.1
 
 RUN apk add --no-cache nodejs python python-dev py-pip build-base bash
 
 RUN npm i serverless -g \
- && pip install stacker runway==${RUNWAY_VERSION} --user \
+ && pip install stacker --user \
  && cd /tmp \
  && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
