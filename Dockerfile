@@ -7,7 +7,7 @@ ENV TERRAFORM_VERSION=0.11.7
 RUN apk add --no-cache nodejs python python-dev py-pip build-base bash
 
 RUN npm i serverless -g \
- && pip install stacker --user \
+ && pip install stacker runway --user \
  && cd /tmp \
  && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
