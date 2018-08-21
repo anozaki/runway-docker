@@ -1,7 +1,7 @@
 FROM docker:latest
 MAINTAINER "Akito Nozaki <anozaki@onica.com>"
 
-ENV TERRAFORM_VERSION=0.11.7
+ENV TERRAFORM_VERSION=0.11.8
 #ENV RUNWAY_VERSION=0.20.1
 
 RUN apk add --no-cache nodejs python python-dev py-pip build-base bash
