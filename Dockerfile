@@ -4,7 +4,7 @@ MAINTAINER "Akito Nozaki <anozaki@onica.com>"
 ENV TERRAFORM_VERSION=0.11.8
 #ENV RUNWAY_VERSION=0.20.1
 
-RUN apk add --no-cache nodejs python python-dev py-pip build-base bash
+RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bash
 
 RUN npm i serverless -g \
  && pip install stacker runway --user \
