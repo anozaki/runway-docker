@@ -8,6 +8,7 @@ RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bas
 
 RUN npm i serverless -g \
  && pip install stacker stacker_blueprints runway --user \
+ && pip install pipenv \
  && cd /tmp \
  && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
