@@ -4,7 +4,7 @@ MAINTAINER "Akito Nozaki <anozaki@onica.com>"
 ENV TERRAFORM_VERSION=0.11.10
 #ENV RUNWAY_VERSION=0.20.1
 
-RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bash
+RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bash curl git
 
 RUN npm i serverless -g \
  && pip install stacker stacker_blueprints runway --user \
@@ -18,10 +18,15 @@ RUN npm i serverless -g \
 RUN rm -rf /root/.cache /root/.npm
 
 RUN mkdir /src
-ENV PATH=/root/.local/bin/:$PATH
-
+ENV PYENV_ROOT=/.pyenv \
+    PATH=/.pyenv/bin:/root/.local/bin/:$PATH
 RUN apk update \
  && apk add python3
 
+RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
+ && pyenv update
+
+RUN echo 'eval "$(pyenv init -)"' >> .profile
+RUN echo 'eval "$(pyenv virtualenv-init -)"' >> .profile
 
 WORKDIR /src
