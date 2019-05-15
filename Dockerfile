@@ -20,7 +20,7 @@ RUN mkdir /src
 ENV PYENV_ROOT=/.pyenv \
     PATH=/.pyenv/bin:/root/.local/bin/:$PATH
 RUN apk update \
- && apk add python3 python3-dev
+ && apk add python3 python3-dev libffi-dev openssl-dev
 
 RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
  && pyenv update
