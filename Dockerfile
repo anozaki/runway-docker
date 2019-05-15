@@ -7,8 +7,7 @@ ENV TERRAFORM_VERSION=0.11.10
 RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bash curl git
 
 RUN npm i serverless -g \
- && pip install stacker stacker_blueprints runway --user \
- && pip install pipenv \
+ && pip install pipenv runway --user \
  && cd /tmp \
  && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
@@ -21,7 +20,7 @@ RUN mkdir /src
 ENV PYENV_ROOT=/.pyenv \
     PATH=/.pyenv/bin:/root/.local/bin/:$PATH
 RUN apk update \
- && apk add python3
+ && apk add python3 python3-dev
 
 RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
  && pyenv update
